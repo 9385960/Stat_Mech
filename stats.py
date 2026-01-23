@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 def RandomSampling(func, xbounds, ybounds, max_iters = 1000):
 	num_iterations = 0
@@ -21,3 +22,10 @@ def MetropolisHastingsStep(func, x, dx):
 			return xp
 		else:
 			return x
+
+def MetropolisHastings(func,x0,dx,n):
+	xs = np.zeros(n+1)
+	xs[0] = x0
+	for i in range(n):
+		xs[i+1] = MetropolisHastingsStep(func,xs[i],dx)
+	return xs
