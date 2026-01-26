@@ -29,3 +29,12 @@ def MetropolisHastings(func,x0,dx,n):
 	for i in range(n):
 		xs[i+1] = MetropolisHastingsStep(func,xs[i],dx)
 	return xs
+
+def sphere_sample(n):
+	thetas = np.arccos(2*np.random.rand(n)-1)
+	phis = np.random.rand(n) * 2*np.pi
+
+	xs = np.cos(phis)*np.sin(thetas)
+	ys = np.sin(phis)*np.sin(thetas)
+	zs = np.cos(thetas)
+	return (xs,ys,zs)
